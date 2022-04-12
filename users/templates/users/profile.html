@@ -1,0 +1,58 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+Profile
+{%endblock%}
+{% block body %}
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
+    <hr class="border-top">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert d-flex justify-content-center alert-danger text-center">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <div>
+        <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="container">
+                <div class="row mt-4">
+                    {% for field in uForm %}
+                    <div class="col-lg-6 mb-3" id="colC">
+                        <input class="form-control" type="{{ field.field.widget.input_type }}"
+                            name="{{ field.html_name }}" maxlength="{{ column.field.max_length }}"
+                            id="{{ field.id_for_label }}" placeholder="{{ field.label }}" value="{{field.value}}">
+                    </div>
+                    {% endfor %}
+                    {% for field in pForm %}
+                    <div class="col-lg-6 mb-3" id="colC">
+                        <input class="form-control" type="{{ field.field.widget.input_type }}"
+                            name="{{ field.html_name }}" maxlength="{{ column.field.max_length }}"
+                            id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if form.errors %}
+                <div class="alert alert-danger mt-lg-2" role="alert">
+                    {% for key, value in form.errors.items %}
+                    {{ value }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="row my-3 justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Update">
+                </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

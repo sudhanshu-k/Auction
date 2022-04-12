@@ -1,0 +1,13 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert d-flex justify-content-center alert-danger text-center">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<h2>Active Listings</h2>
+TODO
+{% endblock %}

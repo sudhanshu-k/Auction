@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Register {%endblock%}
+
+{% block body %}
+<div class="container px-lg-3 py-4 text-center" style="max-width: 600px;" id="borderC">
+    <h4>Register</h4>
+    <hr class="border-top">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert d-flex justify-content-center alert-danger text-center">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="row mt-4">
+                {% for field in form %}
+                <div class="col-lg-6 mb-3" id="colC">
+                    <input class="form-control" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}"
+                        maxlength="{{ column.field.max_length }}" id="{{ field.id_for_label }}"
+                        placeholder="{{ field.label }}">
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if form.errors %}
+            <div class="alert alert-danger mt-lg-2" role="alert">
+                {% for key, value in form.errors.items %}
+                {{ value }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-primary" type="submit" value="SignUp">
+            </div>
+    </form>
+    Already have an account? <a id="linksC" href="{% url 'login' %}">Log In here.</a>
+</div>
+
+{% endblock %}

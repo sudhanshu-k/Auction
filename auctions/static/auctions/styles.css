@@ -1,0 +1,42 @@
+body {
+    color: #eee;
+    background: #1c1c1c;
+    padding-top: 56px;
+}
+/* background-color: rgb(184, 84, 13); */
+.btn{
+    background-color: rgb(184, 84, 13);
+    border-color: rgb(184, 84, 13);
+}
+
+.btn:hover{
+    background-color:rgb(216, 91, 2);
+}
+
+#borderC {
+    border-radius: 15px;
+    border: 2px solid rgb(184, 84, 13);
+}
+
+#textC{
+    color: rgb(184, 84, 13);
+}
+
+#linksC{
+    color: rgb(184, 84, 13);
+}
+
+#linksC:hover{
+    text-decoration-line: none;
+    color:rgb(216, 91, 2);
+}
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
